@@ -129,7 +129,7 @@ Resources:
       SubnetId: !Ref PublicSubnetB
       RouteTableId: !Ref PublicRouteTable
 
-  # NAT Gateway so ECS Fargate in private subnets can pull from ghcr.io
+  # NAT Gateway so ECS Fargate in private subnets can pull from DockerHub
   NatEIP:
     Type: AWS::EC2::EIP
     Properties:
@@ -375,7 +375,7 @@ Resources:
       ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
       ContainerDefinitions:
         - Name: morgenruf
-          Image: ghcr.io/morgenruf/morgenruf:latest
+          Image: morgenruf/morgenruf:latest
           Essential: true
           PortMappings:
             - ContainerPort: 3000

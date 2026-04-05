@@ -165,7 +165,7 @@ Resources:
                 retries: 5
 
             app:
-              image: ghcr.io/morgenruf/morgenruf:latest
+              image: morgenruf/morgenruf:latest
               env_file: .env
               ports:
                 - "3000:3000"
