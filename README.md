@@ -1,5 +1,8 @@
 # Morgenruf — Deploy
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/morgenruf/morgenruf?label=morgenruf&color=brightgreen)](https://github.com/morgenruf/morgenruf/releases)
+
 One-click deployment templates for [Morgenruf](https://morgenruf.dev) — the open-source self-hosted Slack standup bot.
 
 ## 🚀 Deploy Options
