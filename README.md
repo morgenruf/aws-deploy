@@ -21,12 +21,12 @@ One-click deployment templates for [Morgenruf](https://morgenruf.dev) — the op
 ### Starter (~$15/mo)
 EC2 t3.small + docker-compose. Single server, zero management overhead.
 
-[![Launch Starter](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-starter&templateURL=https://raw.githubusercontent.com/morgenruf/deploy/main/aws/starter.yaml)
+[![Launch Starter](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-starter&templateURL=https://raw.githubusercontent.com/morgenruf/aws-deploy/main/aws/starter.yaml)
 
 ### Production (~$25/mo)
 ECS Fargate Spot + RDS t4g.micro + ALB. Auto-healing, no servers to manage.
 
-[![Launch Production](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-prod&templateURL=https://raw.githubusercontent.com/morgenruf/deploy/main/aws/production.yaml)
+[![Launch Production](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-prod&templateURL=https://raw.githubusercontent.com/morgenruf/aws-deploy/main/aws/production.yaml)
 
 → [Full AWS setup guide](./aws/README.md)
 

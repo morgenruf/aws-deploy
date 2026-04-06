@@ -16,6 +16,7 @@ Metadata:
 Parameters:
   SlackClientId:
     Type: String
+    NoEcho: true
     Description: "Slack App → Basic Information → Client ID"
   SlackClientSecret:
     Type: String
@@ -41,6 +42,10 @@ Parameters:
   CertificateArn:
     Type: String
     Description: "ACM certificate ARN for HTTPS (arn:aws:acm:REGION:ACCOUNT:certificate/ID)"
+  MorgenrufImageTag:
+    Type: String
+    Default: "latest"
+    Description: "Docker image tag to deploy, e.g. v1.2.3"
 
 Resources:
 
@@ -227,6 +232,7 @@ Resources:
       DBName: morgenruf
       AllocatedStorage: '20'
       StorageType: gp3
+      StorageEncrypted: true
       MultiAZ: false
       PubliclyAccessible: false
       DBSubnetGroupName: !Ref DBSubnetGroup
@@ -375,7 +381,7 @@ Resources:
       ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
       ContainerDefinitions:
         - Name: morgenruf
-          Image: morgenruf/morgenruf:latest
+          Image: !Sub "morgenruf/morgenruf:${MorgenrufImageTag}"
           Essential: true
           PortMappings:
             - ContainerPort: 3000

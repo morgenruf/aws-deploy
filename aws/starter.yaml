@@ -16,6 +16,7 @@ Metadata:
 Parameters:
   SlackClientId:
     Type: String
+    NoEcho: true
     Description: "Slack App → Basic Information → Client ID"
   SlackClientSecret:
     Type: String
@@ -32,7 +33,7 @@ Parameters:
     Type: String
     NoEcho: true
     Default: ""
-    Description: "Leave blank to auto-generate. Or: openssl rand -hex 32"
+    Description: "Leave blank to auto-generate. Or: openssl rand -hex 32. WARNING: This key regenerates on redeploy, invalidating all user sessions. Store in AWS SSM Parameter Store for persistence."
   DBPassword:
     Type: String
     NoEcho: true
@@ -46,6 +47,14 @@ Parameters:
   KeyPairName:
     Type: AWS::EC2::KeyPair::KeyName
     Description: "EC2 Key Pair for SSH access (optional but recommended)"
+  SSHLocation:
+    Type: String
+    Default: "0.0.0.0/0"
+    Description: "IP range for SSH access — restrict to your IP in production, e.g. 203.0.113.0/32"
+  MorgenrufImageTag:
+    Type: String
+    Default: "latest"
+    Description: "Docker image tag to deploy, e.g. v1.2.3"
 
 Resources:
   # VPC
@@ -100,7 +109,7 @@ Resources:
       GroupDescription: Morgenruf bot
       VpcId: !Ref VPC
       SecurityGroupIngress:
-        - {IpProtocol: tcp, FromPort: 22, ToPort: 22, CidrIp: 0.0.0.0/0}
+        - {IpProtocol: tcp, FromPort: 22, ToPort: 22, CidrIp: !Ref SSHLocation}
         - {IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0}
         - {IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0}
 
@@ -165,7 +174,7 @@ Resources:
                 retries: 5
 
             app:
-              image: morgenruf/morgenruf:latest
+              image: morgenruf/morgenruf:${MorgenrufImageTag}
               env_file: .env
               ports:
                 - "3000:3000"
@@ -202,8 +211,9 @@ Resources:
           docker-compose pull
           docker-compose up -d
 
-          # Get TLS cert (non-interactive, email hardcoded as placeholder)
-          # certbot --nginx -d ${AppDomain} --non-interactive --agree-tos -m admin@${AppDomain} || true
+          # IMPORTANT: HTTPS is not configured by default. Run certbot manually after deploy:
+          # sudo certbot --nginx -d your-domain.com
+          certbot --nginx -d ${AppDomain} --non-interactive --agree-tos -m admin@${AppDomain} || true
 
           echo "Morgenruf deployed! Visit http://${AppDomain} to verify."
       Tags:

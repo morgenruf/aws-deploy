@@ -5,7 +5,7 @@
 ### Starter (~$15/mo) — Single EC2 instance
 Best for small teams. Runs docker-compose on a single server.
 
-[![Launch Starter Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-starter&templateURL=https://raw.githubusercontent.com/morgenruf/morgenruf/main/deploy/aws/starter.yaml)
+[![Launch Starter Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-starter&templateURL=https://raw.githubusercontent.com/morgenruf/aws-deploy/main/aws/starter.yaml)
 
 **What gets created:**
 - EC2 t3.small (Amazon Linux 2023)
@@ -25,7 +25,7 @@ Best for small teams. Runs docker-compose on a single server.
 ### Production (~$25/mo) — ECS Fargate Spot + RDS
 Zero server management. Auto-healing. Recommended for teams that need reliability.
 
-[![Launch Production Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-prod&templateURL=https://raw.githubusercontent.com/morgenruf/morgenruf/main/deploy/aws/production.yaml)
+[![Launch Production Stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=morgenruf-prod&templateURL=https://raw.githubusercontent.com/morgenruf/aws-deploy/main/aws/production.yaml)
 
 **What gets created:**
 - ECS Fargate Spot task (256 CPU / 512MB RAM)
