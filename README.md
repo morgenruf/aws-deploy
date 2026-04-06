@@ -63,6 +63,36 @@ docker compose up -d
 
 ---
 
+---
+
+## 🗑️ Teardown / Cleanup
+
+### AWS CloudFormation
+
+Delete the stack via the AWS Console, or with the CLI:
+
+```bash
+aws cloudformation delete-stack --stack-name <stack-name>
+```
+
+> ⚠️ **Warning:** RDS instances in these templates have no `DeletionProtection` enabled. Deleting the stack will permanently destroy all database data. Back up your data before proceeding.
+
+### Docker Compose
+
+```bash
+docker compose down -v
+```
+
+The `-v` flag removes named volumes, including the database volume.
+
+### Helm
+
+```bash
+helm uninstall morgenruf
+```
+
+---
+
 ## Links
 
 - 🌐 [morgenruf.dev](https://morgenruf.dev)
