@@ -99,3 +99,7 @@ helm uninstall morgenruf
 - 📖 [Docs](https://docs.morgenruf.dev)
 - 💻 [Source](https://github.com/morgenruf/morgenruf)
 - 📦 [Helm Charts](https://github.com/morgenruf/helm-charts)
+
+---
+
+<sub>Part of [Morgenruf](https://github.com/morgenruf/morgenruf), the self-hosted Slack standup bot &middot; [morgenruf.dev](https://morgenruf.dev) &middot; [docs](https://docs.morgenruf.dev) &middot; [status](https://status.morgenruf.dev)</sub>
